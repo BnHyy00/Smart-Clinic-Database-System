@@ -26,7 +26,7 @@ To support teamwork and maintain a clear GitHub commit history, the project was 
 
 - MySQL
 - GitHub
-- Drow.io (ER/EER Diagram)
+- Draw.io (ER/EER Diagram)
 
 ---
 
