@@ -17,3 +17,18 @@ SET Unit_Price = 6.00
 WHERE Medicine_ID = 1;
 DELETE FROM Medicines
 WHERE Medicine_ID = 5;
+
+DELIMITER //
+
+CREATE TRIGGER Before_Medicine_Update
+BEFORE UPDATE ON Medicines
+FOR EACH ROW
+BEGIN
+    IF NEW.Stock_Quantity < 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Stock quantity cannot be negative.';
+    END IF;
+  END;
+  //
+
+  DELIMITER ;
