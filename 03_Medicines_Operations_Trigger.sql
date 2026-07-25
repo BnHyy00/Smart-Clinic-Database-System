@@ -6,4 +6,9 @@ DROP TABLE IF EXISTS Medicines;
   Unit_Price DECIMAL(10, 2) NOT NULL,
   Stock_Quantity INT NOT NULL
 );
-
+INSERT INTO Medicines (Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Quantity) VALUES
+(1, 'Paracetamol', 'Analgesic', 5.50, 150),
+(2, 'Amoxicillin', 'Antibiotic', 12.00, 80),
+(3, 'Ibuprofen', 'Anti-inflammatory', 8.25, 200),
+(4, 'Omeprazole', 'Antacid', 15.75, 60),
+(5, 'Cetirizine', 'Antihistamine', 6.00, 120);
