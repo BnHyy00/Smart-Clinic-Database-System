@@ -10,12 +10,14 @@
 
 -- Student 4: Payments, SELECT, and VIEW
 USE SmartClinicDB;
-
+/*-------------------------------------
+--Here is the Payments table creation
+-------------------------------------*/
 CREATE TABLE Payments (
     payment_ID INT AUTO_INCREMENT PRIMARY KEY,
     appointment_ID INT NOT NULL,
     payment_date DATE NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
-    payment_method VARCHAR(30) NOT NULL,
-    payment_status VARCHAR(20) NOT NULL
+    payment_status VARCHAR(20) NOT NULL,
+    payment_type ENUM('Cash','Card') NOT NULL
 );
