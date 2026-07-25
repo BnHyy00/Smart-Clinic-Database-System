@@ -8,12 +8,7 @@ The Smart Clinic Database System is a MySQL database designed to manage the main
 
 To support teamwork and maintain a clear GitHub commit history, the project was divided into separate SQL files during development. After completing each part, all files were merged into **SmartClinic.sql**, which contains the final version of the project.
 
-## Team Members
 
-- Albandary Alhayyaf
-- Bashaer Alkhuzaee
-- Ebtehal AlHarbi
-- Raneem Alrashdi
 
 ## Repository Files
 
@@ -28,10 +23,15 @@ To support teamwork and maintain a clear GitHub commit history, the project was 
 - GitHub
 - Draw.io (ER/EER Diagram)
 
-<h2>EER Diagram</h2>
+## EER Diagram
   <img src="EER_Diagram.png.png" alt="EER Diagram" width="350">
   
 ---
+## Team Members
+- Albandary Alhayyaf
+- Bashaer Alkhuzaee
+- Ebtehal AlHarbi
+- Raneem Alrashdi
 
 **Course:** IT244 – Introduction to Database  
 **University:** Saudi Electronic University
