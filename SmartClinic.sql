@@ -21,3 +21,27 @@ CREATE TABLE Payments (
     payment_status VARCHAR(20) NOT NULL,
     payment_type ENUM('Cash','Card') NOT NULL
 );
+
+
+/*-------------------------------------
+--Display all payment records
+-------------------------------------*/
+SELECT *
+FROM Payments;
+/*-------------------------------------
+--Create a view for paid payments
+-------------------------------------*/
+CREATE VIEW Paid_Payments AS
+SELECT
+    payment_ID,
+    appointment_ID,
+    payment_date,
+    amount,
+    payment_type
+FROM Payments
+WHERE payment_status = 'Paid';
+/*-------------------------------------
+--Display records from Paid_Payments view
+-------------------------------------*/
+SELECT *
+FROM Paid_Payments;
