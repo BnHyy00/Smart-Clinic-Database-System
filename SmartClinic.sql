@@ -21,8 +21,27 @@ CREATE TABLE Payments (
     payment_status VARCHAR(20) NOT NULL,
     payment_type ENUM('Cash','Card') NOT NULL
 );
-
-
+/*-------------------------------------
+--Here is the Cash_Payments table creation
+-------------------------------------*/
+CREATE TABLE Cash_Payments (
+    payment_ID INT PRIMARY KEY,
+    received_by VARCHAR(80) NOT NULL,
+    FOREIGN KEY (payment_ID)
+        REFERENCES Payments(payment_ID)
+        ON DELETE CASCADE
+);
+/*-------------------------------------
+--Here is the Card_Payments table creation
+-------------------------------------*/
+CREATE TABLE Card_Payments (
+    payment_ID INT PRIMARY KEY,
+    transaction_ID VARCHAR(100) UNIQUE NOT NULL,
+    card_type VARCHAR(30) NOT NULL,
+    FOREIGN KEY (payment_ID)
+        REFERENCES Payments(payment_ID)
+        ON DELETE CASCADE
+);
 /*-------------------------------------
 --Display all payment records
 -------------------------------------*/
