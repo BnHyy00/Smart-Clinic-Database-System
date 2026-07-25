@@ -12,3 +12,6 @@ INSERT INTO Medicines (Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Q
 (3, 'Ibuprofen', 'Anti-inflammatory', 8.25, 200),
 (4, 'Omeprazole', 'Antacid', 15.75, 60),
 (5, 'Cetirizine', 'Antihistamine', 6.00, 120);
+UPDATE Medicines
+SET Unit_Price = 6.00
+WHERE Medicine_ID = 1;
