@@ -28,6 +28,9 @@ To support teamwork and maintain a clear GitHub commit history, the project was 
 - GitHub
 - Draw.io (ER/EER Diagram)
 
+<h2>EER Diagram</h2>
+  <img src="EER_Diagram.png.png" alt="EER Diagram" width="350">
+  
 ---
 
 **Course:** IT244 – Introduction to Database  
