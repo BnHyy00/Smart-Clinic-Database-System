@@ -15,3 +15,5 @@ INSERT INTO Medicines (Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Q
 UPDATE Medicines
 SET Unit_Price = 6.00
 WHERE Medicine_ID = 1;
+DELETE FROM Medicines
+WHERE Medicine_ID = 5;
