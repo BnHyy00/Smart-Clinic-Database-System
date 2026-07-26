@@ -8,4 +8,15 @@ Status VARCHAR(20) NOT NULL,
 FOREIGN KEY(PatientID) REFERENCES Patients(PatientID),
 FOREIGN KEY(DoctorID) REFERENCES Doctors(DoctorID));
 
+CREATE TABLE Treatments(
+TreatmentID INT AUTO_INCREMENT PRIMARY KEY,
+AppointmentID INT NOT NULL,
+Diagnosis VARCHAR(150) NOT NULL,
+TreatmentDetails VARCHAR(255),
+FOREIGN KEY(AppointmentID) REFERENCES Appointments(AppointmentID));
+CREATE TABLE Medicines(
+MedicineID INT AUTO_INCREMENT PRIMARY KEY,
+MedicineName VARCHAR(100) NOT NULL,
+Price DECIMAL(8,2) NOT NULL,
+Stock INT NOT NULL);
 
