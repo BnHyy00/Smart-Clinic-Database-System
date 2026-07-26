@@ -19,7 +19,10 @@ CREATE TABLE Payments (
     payment_date DATE NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
     payment_status VARCHAR(20) NOT NULL,
-    payment_type ENUM('Cash','Card') NOT NULL
+    payment_type ENUM('Cash','Card') NOT NULL,
+    
+    FOREIGN KEY (appointment_ID)
+        REFERENCES Appointments(appointment_ID)
 );
 /*-------------------------------------
 --Here is the Cash_Payments table creation
@@ -42,6 +45,26 @@ CREATE TABLE Card_Payments (
         REFERENCES Payments(payment_ID)
         ON DELETE CASCADE
 );
+/*-------------------------------------
+-- Insert payment records
+-------------------------------------*/
+INSERT INTO Payments
+(appointment_ID, payment_date, amount, payment_status, payment_type)
+VALUES
+(1, '2026-08-01', 250.00, 'Paid', 'Cash'),
+(2, '2026-08-02', 300.00, 'Paid', 'Card'),
+(3, '2026-08-03', 150.00, 'Pending', 'Card'),
+(4, '2026-08-04', 200.00, 'Paid', 'Cash'),
+(5, '2026-08-05', 100.00, 'Cancelled', 'Card');
+/*-------------------------------------
+-- Insert cash payment details
+-------------------------------------*/
+INSERT INTO Cash_Payments
+(payment_ID, received_by)
+VALUES
+(1, 'Ahmed Ali'),
+(4, 'Sara Mohammed');
+
 /*-------------------------------------
 --Display all payment records
 -------------------------------------*/
