@@ -1,1 +1,21 @@
+Run SELECT * on each table and capture screenshots
+SQL Script
+CREATE DATABASE SmartClinicDB;
+USE SmartClinicDB;
+
+CREATE TABLE Patients(
+PatientID INT AUTO_INCREMENT PRIMARY KEY,
+FullName VARCHAR(100) NOT NULL,
+Gender ENUM('Male','Female') NOT NULL,
+DateOfBirth DATE NOT NULL,
+Phone VARCHAR(15) UNIQUE,
+Address VARCHAR(100));
+
+CREATE TABLE Doctors(
+DoctorID INT AUTO_INCREMENT PRIMARY KEY,
+FullName VARCHAR(100) NOT NULL,
+Specialization VARCHAR(100) NOT NULL,
+Phone VARCHAR(15) UNIQUE,
+Email VARCHAR(100) UNIQUE);
+
 
