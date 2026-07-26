@@ -64,7 +64,15 @@ INSERT INTO Cash_Payments
 VALUES
 (1, 'Ahmed Ali'),
 (4, 'Sara Mohammed');
-
+/*-------------------------------------
+-- Insert card payment details
+-------------------------------------*/
+INSERT INTO Card_Payments
+(payment_ID, transaction_ID, card_type)
+VALUES
+(2, 'TRX1001', 'Visa'),
+(3, 'TRX1002', 'Mastercard'),
+(5, 'TRX1003', 'Visa');
 /*-------------------------------------
 --Display all payment records
 -------------------------------------*/
