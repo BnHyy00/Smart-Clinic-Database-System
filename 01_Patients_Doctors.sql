@@ -22,6 +22,19 @@ CREATE TABLE Patients (patient_ID INT AUTO_INCREMENT  PRIMARY KEY,
     phone_number VARCHAR(15) UNIQUE NOT NULL,
     email VARCHAR(80) UNIQUE,
     address VARCHAR(255));
+/*-------------------------------------
+--Here is the Prescriptions table creation
+-------------------------------------*/
+CREATE TABLE Prescriptions (prescription_ID INT AUTO_INCREMENT  PRIMARY KEY,
+  patient_ID INT,
+  medicine_ID INT,
+  doctor_ID INT,
+  dosage VARCHAR(100) NOT NULL,
+  prescription_date DATE NOT NULL,
+  FOREIGN KEY (patient_ID) REFERENCES Patients(patient_ID),
+  FOREIGN KEY (doctor_ID) REFERENCES Doctors(doctor_ID),
+  FOREIGN KEY (medicine_ID) REFERENCES Medicines(medicine_ID)
+);
 
 /*-------------------------------------
 --Here to Insert into Doctors table
@@ -32,7 +45,6 @@ INSERT INTO Doctors (first_name, last_name,date_of_birth, gender, specialization
 ('Mohammed', 'Salem', '1978-12-01', 'Male', 'Dermatology', '0563334455', 'mohammed.salem@clinic.com'),
 ('Sara', 'Mohammed', '1990-03-22', 'Female', 'General Practice', '0544445566', 'sara.qahtani@clinic.com'),
 ('Rakan', 'Saud', '1982-11-05', 'Male', 'Orthopedics', '0535556677', 'khalid.sultan@clinic.com');
-
 /*-------------------------------------
 --Here to Insert into Patients table
 -------------------------------------*/
@@ -42,6 +54,14 @@ INSERT INTO Patients (first_name, last_name,date_of_birth, gender, phone_number,
 ('Reem', 'Fahad', '2001-01-15', 'Female', '0567776655', 'reem@email.com', 'Riyadh - Al-Narjis'),
 ('Mohammed', 'Mansour', '1975-11-30', 'Male', '0546665544', '', 'Riyadh - An nada'),
 ('Layan', 'Tariq', '1999-06-05', 'Female', '0535554433', 'layan@email.com', 'Riyadh - Al-Yasmin');
+/*-------------------------------------
+--Here to Insert into Prescriptions table
+-------------------------------------*/
+INSERT INTO Prescriptions (patient_ID, medicine_ID, doctor_ID, dosage, prescription_date) VALUES
+(1, 1, 4,'1 tablet every 8 hours', '2026-03-01'), 
+(1, 3, 4,'1 tablet after meals', '2026-03-01'),    
+(2, 2, 5,'1 capsule twice daily', '2026-03-02'),    
+(3, 4, 3,'1 tablet before breakfast', '2026-03-03');
 
 /*------------------------------------------
 --Here some SELECT queries for data retrival 
