@@ -23,8 +23,11 @@ To support teamwork and maintain a clear GitHub commit history, the project was 
 - GitHub
 - Draw.io (ER/EER Diagram)
 
+## ER Diagram
+  <img src="ER_Diagram.drawio.png" alt="ER Diagram" width="500">
+  
 ## EER Diagram
-  <img src="EER_Diagram.png.png" alt="EER Diagram" width="350">
+  <img src="EER_Diagram.drawio.png" alt="EER Diagram" width="350">  
   
 ---
 ## Team Members
