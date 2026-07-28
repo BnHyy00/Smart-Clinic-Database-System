@@ -19,12 +19,15 @@ INSERT INTO Medicines (Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Q
 (4, 'Omeprazole', 'Antacid', 15.75, 60),
 (5, 'Cetirizine', 'Antihistamine', 6.50, 120);
 
-UPDATE Medicines
-SET Unit_Price = 6.00
+-- 4. UPDATE: Modify an existing record (e.g., updating stock and price for Paracetamol)
+UPDATE Medicines 
+SET Stock_Quantity = 140, Unit_Price = 5.75 
 WHERE Medicine_ID = 1;
-DELETE FROM Medicines
-WHERE Medicine_ID = 5;
+-- 5. DELETE: Remove a record from the table (e.g., deleting Omeprazole)
+DELETE FROM Medicines 
+WHERE Medicine_ID = 4;
 
+-- 6. TRIGGER: Validation trigger to prevent negative stock quantities during an update
 DELIMITER //
 
 CREATE TRIGGER Before_Medicine_Update
@@ -35,7 +38,7 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: Stock quantity cannot be negative.';
     END IF;
-  END;
-  //
+END;
+//
 
-  DELIMITER ;
+DELIMITER ;
