@@ -1,3 +1,7 @@
+-- Create and select the database
+CREATE DATABASE IF NOT EXISTS smart_clinic;
+USE smart_clinic;
+
 DROP TABLE IF EXISTS Medicines;
  CREATE TABLE Medicines (
   Medicine_ID INT PRIMARY KEY,
