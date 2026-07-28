@@ -24,10 +24,10 @@ To support teamwork and maintain a clear GitHub commit history, the project was 
 - Draw.io (ER/EER Diagram)
 
 ## ER Diagram
-  <img src="ER_Diagram.drawio.png" alt="ER Diagram" width="500">
+  <img src="ER-Diagram.drawio.png" alt="ER Diagram" width="600">
   
 ## EER Diagram
-  <img src="EER_Diagram.drawio.png" alt="EER Diagram" width="350">  
+  <img src="EER_Diagram.drawio.png" alt="EER Diagram" width="400">  
   
 ---
 ## Team Members
@@ -36,5 +36,3 @@ To support teamwork and maintain a clear GitHub commit history, the project was 
 - Ebtehal AlHarbi
 - Raneem Alrashdi
 
-**Course:** IT244 – Introduction to Database  
-**University:** Saudi Electronic University
