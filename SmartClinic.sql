@@ -95,3 +95,20 @@ WHERE payment_status = 'Paid';
 -------------------------------------*/
 SELECT *
 FROM Paid_Payments;
+/*-------------------------------------
+--Here is the Treatment_Medicines table creation
+-------------------------------------*/
+CREATE TABLE Treatment_Medicines (
+    treatment_ID INT,
+    medicine_ID INT,
+    dosage VARCHAR(50),
+    duration VARCHAR(50),
+
+    PRIMARY KEY (treatment_ID, medicine_ID),
+
+    FOREIGN KEY (treatment_ID)
+        REFERENCES Treatments(treatment_ID),
+
+    FOREIGN KEY (medicine_ID)
+        REFERENCES Medicines(medicine_ID)
+);
