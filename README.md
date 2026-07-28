@@ -24,7 +24,7 @@ To support teamwork and maintain a clear GitHub commit history, the project was 
 - Draw.io (ER/EER Diagram)
 
 ## ER Diagram
-  <img src="ER-Diagram.drawio.png" alt="ER Diagram" width="600">
+  <img src="ER.Diagram.drawio.png" alt="ER Diagram" width="600">
   
 ## EER Diagram
   <img src="EER_Diagram.drawio.png" alt="EER Diagram" width="400">  
