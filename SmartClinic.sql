@@ -39,18 +39,44 @@
 
 
 /*-------------------------------------
--- Student 4: Payments table
+--Here is the Payments table creation
 -------------------------------------*/
+CREATE TABLE Payments (
+    payment_ID INT AUTO_INCREMENT PRIMARY KEY,
+    appointment_ID INT NOT NULL,
+    payment_date DATE NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_status VARCHAR(20) NOT NULL,
+    payment_type ENUM('Cash','Card') NOT NULL,
+    
+    FOREIGN KEY (appointment_ID)
+        REFERENCES Appointments(appointment_ID)
+);
 
 
 /*-------------------------------------
--- Student 4: Cash_Payments table
+--Here is the Cash_Payments table creation
 -------------------------------------*/
+CREATE TABLE Cash_Payments (
+    payment_ID INT PRIMARY KEY,
+    received_by VARCHAR(80) NOT NULL,
+    FOREIGN KEY (payment_ID)
+        REFERENCES Payments(payment_ID)
+        ON DELETE CASCADE
+);
 
 
 /*-------------------------------------
--- Student 4: Card_Payments table
+--Here is the Card_Payments table creation
 -------------------------------------*/
+CREATE TABLE Card_Payments (
+    payment_ID INT PRIMARY KEY,
+    transaction_ID VARCHAR(100) UNIQUE NOT NULL,
+    card_type VARCHAR(30) NOT NULL,
+    FOREIGN KEY (payment_ID)
+        REFERENCES Payments(payment_ID)
+        ON DELETE CASCADE
+);
 
 
 /*-------------------------------------
@@ -59,8 +85,22 @@
 
 
 /*-------------------------------------
--- Student 4: Treatment_Medicines table
+--Here is the Treatment_Medicines table creation
 -------------------------------------*/
+CREATE TABLE Treatment_Medicines (
+    treatment_ID INT,
+    medicine_ID INT,
+    dosage VARCHAR(50),
+    duration VARCHAR(50),
+
+    PRIMARY KEY (treatment_ID, medicine_ID),
+
+    FOREIGN KEY (treatment_ID)
+        REFERENCES Treatments(treatment_ID),
+
+    FOREIGN KEY (medicine_ID)
+        REFERENCES Medicines(medicine_ID)
+);
 
 
 
