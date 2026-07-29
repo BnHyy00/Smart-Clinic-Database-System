@@ -77,3 +77,16 @@ SELECT patient_ID, first_name, last_name, gender, phone_number FROM Patients;
 /*-------------------------------------
 --Here JOIN query 
 -------------------------------------*/
+SELECT CONCAT (P.first_name, ' ', P.last_name) AS Patient_Name,
+P.phone_number,
+M.Medicine_Name,
+M.Category As Medicine_Category,
+PM.dosage,
+CONCAT (D.first_name, ' ', D.last_name) AS Doctor_Name,
+Pr.prescription_date
+FROM Patients P
+INNER JOIN Prescriptions Pr ON P.patient_ID = Pr.patient_ID
+INNER JOIN Doctors D ON D.doctor_ID = Pr.doctor_ID
+INNER JOIN Prescription_Medicines PM ON Pr.prescription_ID = PM.prescription_ID
+INNER JOIN Medicines M ON PM.medicine_ID = M.Medicine_ID;
+--
