@@ -69,13 +69,13 @@ INSERT INTO Prescription_Medicines (prescription_ID, Medicine_ID, dosage) VALUES
 (3, 4, '1 tablet before breakfast');
 
 /*------------------------------------------
---SELECT queries for data retrival 
+--SELECT queries 
 ------------------------------------------*/
 SELECT * FROM Doctors;
 SELECT patient_ID, first_name, last_name, gender, phone_number FROM Patients;
 
 /*-------------------------------------
---Here JOIN query 
+--JOIN query 
 -------------------------------------*/
 SELECT CONCAT (P.first_name, ' ', P.last_name) AS Patient_Name,
 P.phone_number,
@@ -90,3 +90,16 @@ INNER JOIN Doctors D ON D.doctor_ID = Pr.doctor_ID
 INNER JOIN Prescription_Medicines PM ON Pr.prescription_ID = PM.prescription_ID
 INNER JOIN Medicines M ON PM.medicine_ID = M.Medicine_ID;
 --
+
+SELECT CONCAT (P.first_name, ' ', P.last_name) AS Patient_Name,
+CONCAT (D.first_name, ' ', D.last_name) AS Doctor_Name,
+D.specialization AS Doctor_Specialization,
+A.appointment_date,
+A.appointment_time,
+A.appointment_status,
+T.diagnosis,
+T.treatment_details
+FROM Appointments A
+INNER JOIN Patients P ON A.patient_ID = P.patient_ID
+INNER JOIN Doctors D ON A.doctor_ID = D.doctor_ID
+INNER JOIN Treatments T ON A.appointment_ID = T.appointment_ID;
