@@ -44,6 +44,8 @@ WHERE Medicine_ID = 6;
 SELECT* 
 FROM Medicines;
 
+
+
 -- STEP 1: CREATE THE TABLE
 CREATE TABLE Medicines (
     Medicine_ID INT PRIMARY KEY,
