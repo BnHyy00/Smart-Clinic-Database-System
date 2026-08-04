@@ -45,24 +45,6 @@ SELECT*
 FROM Medicines;
 
 
-
--- STEP 1: CREATE THE TABLE
-CREATE TABLE Medicines (
-    Medicine_ID INT PRIMARY KEY,
-    Medicine_Name VARCHAR(100) NOT NULL,
-    Category VARCHAR(50),
-    Unit_Price DECIMAL(10, 2),
-    Stock_Quantity INT
-);
-
--- STEP 2: INSERT SAMPLE DATA
-INSERT INTO Medicines (Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Quantity) VALUES
-(1, 'Paracetamol', 'Analgesic', 5.50, 100),
-(2, 'Amoxicillin', 'Antibiotic', 12.00, 50),
-(3, 'Ibuprofen', 'Anti-inflammatory', 8.25, 75),
-(4, 'Cetirizine', 'Antihistamine', 6.00, 120),
-(5, 'Omeprazole', 'Antacid', 15.00, 40);
-
 -- 1. SELECT
 SELECT *
 FROM Medicines;
