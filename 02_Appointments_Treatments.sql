@@ -29,24 +29,9 @@ CREATE TABLE Treatments (
     treatment_details VARCHAR(255),
     FOREIGN KEY (appointment_ID) REFERENCES Appointments(appointment_ID) ON DELETE CASCADE
 );
-
--- 5. Insert sample data into Patients
-INSERT INTO Patients (patient_name, email) VALUES 
-('Ahmed Ali', 'ahmed@example.com'),
-('Sarah Smith', 'sarah@example.com'),
-('Khalid Omar', 'khalid@example.com'),
-('Mona Hassan', 'mona@example.com'),
-('Omar Salem', 'omar@example.com');
-
--- 6. Insert sample data into Doctors
-INSERT INTO Doctors (doctor_name, specialty) VALUES 
-('Dr. Ali Salem', 'Cardiology'),
-('Dr. Fatima Noor', 'Dentistry'),
-('Dr. Youssef Ahmed', 'General Medicine'),
-('Dr. Noura Fahad', 'Dermatology'),
 ('Dr. Hossam Zaid', 'Pediatrics');
 
--- 7. Insert sample data into Appointments
+-- 5. Insert sample data into Appointments
 INSERT INTO Appointments (patient_ID, doctor_ID, appointment_date, appointment_time, appointment_status) VALUES
 (1, 1, '2026-08-01', '09:00:00', 'Completed'),
 (2, 2, '2026-08-02', '10:00:00', 'Completed'),
@@ -54,7 +39,7 @@ INSERT INTO Appointments (patient_ID, doctor_ID, appointment_date, appointment_t
 (4, 4, '2026-08-04', '13:00:00', 'Completed'),
 (5, 5, '2026-08-05', '14:00:00', 'Cancelled');
 
--- 8. Insert sample data into Treatments
+-- 6. Insert sample data into Treatments
 INSERT INTO Treatments (appointment_ID, diagnosis, treatment_details) VALUES
 (1, 'Hypertension', 'Medication prescribed'),
 (2, 'Tooth Decay', 'Dental Filling'),
@@ -62,7 +47,7 @@ INSERT INTO Treatments (appointment_ID, diagnosis, treatment_details) VALUES
 (4, 'Allergy', 'Topical Cream'),
 (5, 'Checkup', 'General Health Advice');
 
--- 9. Select Queries for Output Verification
+-- 7. Select Queries for Output Verification
 -- Query A: Display all records from Appointments
 SELECT * FROM Appointments;
 
