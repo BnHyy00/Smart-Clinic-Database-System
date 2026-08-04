@@ -342,7 +342,8 @@ INNER JOIN Treatments T ON A.appointment_ID = T.appointment_ID;
 /*-------------------------------------
 -- Student 3: Display medicine records
 -------------------------------------*/
-
+SELECT* 
+FROM Medicines;
 
 
 /*-------------------------------------
