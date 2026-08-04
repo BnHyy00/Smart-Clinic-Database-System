@@ -60,17 +60,9 @@ CREATE TABLE Medicines (
     Medicine_ID INT PRIMARY KEY,
     Medicine_Name VARCHAR(100) NOT NULL,
     Category VARCHAR(50),
-    Unit_Price DECIMAL(10, 2) NOT NULL,
+    Unit_Price DECIMAL(10,2) NOT NULL,
     Stock_Quantity INT NOT NULL
 );
-
-
-CREATE TABLE Prescriptions (prescription_ID INT AUTO_INCREMENT  PRIMARY KEY,
-  patient_ID INT NOT NULL,
-  doctor_ID INT NOT NULL,
-  prescription_date DATE NOT NULL,
-  FOREIGN KEY (patient_ID) REFERENCES Patients(patient_ID),
-  FOREIGN KEY (doctor_ID) REFERENCES Doctors(doctor_ID));
 
 /*-------------------------------------
 --Here is the Payments table creation
@@ -176,19 +168,15 @@ INSERT INTO Patients (first_name, last_name,date_of_birth, gender, phone_number,
 /*-------------------------------------
 -- Student 3: Insert medicine records
 -------------------------------------*/
-INSERT INTO Medicines (Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Quantity) VALUES
+INSERT INTO Medicines
+(Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Quantity)
+VALUES
 (1, 'Paracetamol', 'Analgesic', 5.50, 150),
 (2, 'Amoxicillin', 'Antibiotic', 12.00, 80),
 (3, 'Ibuprofen', 'Anti-inflammatory', 8.25, 200),
 (4, 'Omeprazole', 'Antacid', 15.75, 60),
-(5, 'Cetirizine', 'Antihistamine', 6.50, 120);
-
-
-INSERT INTO Prescriptions (prescription_ID, patient_ID, doctor_ID, prescription_date) VALUES
-(1, 1, 4, '2026-03-01'),  
-(2, 2, 5, '2026-03-02'),  
-(3, 3, 3, '2026-03-03');
-
+(5, 'Cetirizine', 'Antihistamine', 6.50, 120),
+(6, 'Aspirin', 'Analgesic', 7.00, 90);
 /*-------------------------------------
 -- Insert payment records
 -------------------------------------*/
@@ -242,16 +230,6 @@ INSERT INTO Prescription_Medicines (prescription_ID, Medicine_ID, dosage) VALUES
 -------------------------------------*/
 DELIMITER //
 
-CREATE TRIGGER Check_Medicine_Price
-BEFORE INSERT ON Medicines
-FOR EACH ROW
-BEGIN
-    IF NEW.Unit_Price < 0 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Error: Unit price cannot be negative.';
-    END IF;
-END//
-
 CREATE TRIGGER Before_Medicine_Update
 BEFORE UPDATE ON Medicines
 FOR EACH ROW
@@ -260,19 +238,21 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: Stock quantity cannot be negative.';
     END IF;
-END//
+END //
 
 DELIMITER ;
 
 /*-------------------------------------
 -- Student 3: UPDATE query
 -------------------------------------*/
-
+UPDATE Medicines
+SET Unit_Price = 6.00
+WHERE Medicine_ID = 1;
 
 /*-------------------------------------
 -- Student 3: DELETE query
 -------------------------------------*/
-DELETE FROM Medicines 
+DELETE FROM Medicines
 WHERE Medicine_ID = 6;
 
 /*-------------------------------------
@@ -345,7 +325,7 @@ INNER JOIN Treatments T ON A.appointment_ID = T.appointment_ID;
 /*-------------------------------------
 -- Student 3: Display medicine records
 -------------------------------------*/
-SELECT* 
+SELECT *
 FROM Medicines;
 
 
