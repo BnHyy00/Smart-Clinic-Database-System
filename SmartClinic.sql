@@ -173,7 +173,12 @@ INSERT INTO Patients (first_name, last_name,date_of_birth, gender, phone_number,
 /*-------------------------------------
 -- Student 3: Insert medicine records
 -------------------------------------*/
-
+INSERT INTO Medicines (Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Quantity) VALUES
+(1, 'Paracetamol', 'Analgesic', 5.50, 150),
+(2, 'Amoxicillin', 'Antibiotic', 12.00, 80),
+(3, 'Ibuprofen', 'Anti-inflammatory', 8.25, 200),
+(4, 'Omeprazole', 'Antacid', 15.75, 60),
+(5, 'Cetirizine', 'Antihistamine', 6.50, 120);
 
 /*-------------------------------------
 -- Student 1: Insert prescription records
