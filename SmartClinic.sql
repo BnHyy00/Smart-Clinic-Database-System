@@ -243,17 +243,15 @@ INSERT INTO Prescription_Medicines (prescription_ID, Medicine_ID, dosage) VALUES
 -------------------------------------*/
 DELIMITER //
 
-CREATE TRIGGER Before_Medicine_Update
-BEFORE UPDATE ON Medicines
+CREATE TRIGGER Check_Medicine_Price
+BEFORE INSERT ON Medicines
 FOR EACH ROW
 BEGIN
-    IF NEW.Stock_Quantity < 0 THEN
+    IF NEW.Unit_Price < 0 THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Error: Stock quantity cannot be negative.';
+        SET MESSAGE_TEXT = 'Error: Unit price cannot be negative.';
     END IF;
 END//
-
-DELIMITER ;
 
 /*-------------------------------------
 -- Student 3: UPDATE query
