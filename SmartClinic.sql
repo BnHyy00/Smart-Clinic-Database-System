@@ -170,7 +170,12 @@ INSERT INTO Appointments (patient_ID, doctor_ID, appointment_date, appointment_t
 /*-------------------------------------
 -- Student 2: Insert treatment records
 -------------------------------------*/
-
+INSERT INTO Treatments (appointment_ID, diagnosis, treatment_details) VALUES
+(1, 'Hypertension', 'Medication prescribed'),
+(2, 'Tooth Decay', 'Dental Filling'),
+(3, 'Flu', 'Rest and hydration'),
+(4, 'Allergy', 'Topical Cream'),
+(5, 'Checkup', 'General Health Advice');
 
 /*-------------------------------------
 -- Student 3: Insert medicine records
@@ -317,17 +322,34 @@ INNER JOIN Treatments T ON A.appointment_ID = T.appointment_ID;
 /*-------------------------------------
 -- Student 2: SELECT queries
 -------------------------------------*/
+ Display all records from Appointments
+SELECT  FROM Appointments;
+-- Query B: Display all records from Treatments
+SELECT  FROM Treatments;
 
 
 /*-------------------------------------
 -- Student 2: Nested query
 -------------------------------------*/
+ Nested Query to retrieve treatment details for completed appointments
+SELECT 
+FROM Treatments 
+WHERE appointment_ID IN (
+    SELECT appointment_ID 
+    FROM Appointments 
+    WHERE appointment_status = 'Completed'
 
 
 /*-------------------------------------
 -- Student 2: GROUP BY query
 -------------------------------------*/
 
+Count total appointments grouped by appointment status
+SELECT 
+    appointment_status, 
+    COUNT AS total_appointments 
+FROM Appointments 
+GROUP BY appointment_status; 
 
 /*-------------------------------------
 -- Student 3: Display medicine records
