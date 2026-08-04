@@ -258,7 +258,9 @@ DELIMITER ;
 /*-------------------------------------
 -- Student 3: UPDATE query
 -------------------------------------*/
-
+UPDATE Medicines 
+SET Unit_Price = 6.00 
+WHERE Medicine_ID = 1;
 
 /*-------------------------------------
 -- Student 3: DELETE query
