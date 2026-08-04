@@ -45,7 +45,13 @@ CREATE TABLE Patients (patient_ID INT AUTO_INCREMENT  PRIMARY KEY,
 /*-------------------------------------
 -- Student 3: Medicines table
 -------------------------------------*/
-
+CREATE TABLE Medicines (
+    Medicine_ID INT PRIMARY KEY,
+    Medicine_Name VARCHAR(100) NOT NULL,
+    Category VARCHAR(50),
+    Unit_Price DECIMAL(10, 2) NOT NULL,
+    Stock_Quantity INT NOT NULL
+);
 
 /*-------------------------------------
 -- Student 1: Prescriptions table
