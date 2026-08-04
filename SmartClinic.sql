@@ -8,9 +8,7 @@
 =======================================================*/
 
 
-/*-------------------------------------
--- Student 1: Doctors table
--------------------------------------*/
+
 CREATE TABLE Doctors (doctor_ID INT AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
@@ -20,9 +18,7 @@ CREATE TABLE Doctors (doctor_ID INT AUTO_INCREMENT PRIMARY KEY,
   phone_number VARCHAR(15) UNIQUE NOT NULL,
   email VARCHAR(80) UNIQUE NOT NULL);
 
-/*-------------------------------------
--- Student 1: Patients table
--------------------------------------*/
+
 CREATE TABLE Patients (patient_ID INT AUTO_INCREMENT  PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
@@ -53,9 +49,7 @@ CREATE TABLE Medicines (
     Stock_Quantity INT NOT NULL
 );
 
-/*-------------------------------------
--- Student 1: Prescriptions table
--------------------------------------*/
+
 CREATE TABLE Prescriptions (prescription_ID INT AUTO_INCREMENT  PRIMARY KEY,
   patient_ID INT NOT NULL,
   doctor_ID INT NOT NULL,
@@ -104,9 +98,7 @@ CREATE TABLE Card_Payments (
 );
 
 
-/*-------------------------------------
--- Student 1: Prescription_Medicines table
--------------------------------------*/
+
 CREATE TABLE Prescription_Medicines (prescription_ID INT,
   Medicine_ID INT,
   dosage VARCHAR(100) NOT NULL,
@@ -140,9 +132,7 @@ CREATE TABLE Treatment_Medicines (
 =======================================================*/
 
 
-/*-------------------------------------
--- Student 1: Insert doctor records
--------------------------------------*/
+
 INSERT INTO Doctors (first_name, last_name,date_of_birth, gender, specialization, phone_number, email) VALUES
 ('Ahmed', 'Ali', '1980-05-10', 'Male', 'Cardiology', '0501112233', 'ahmed.otaibi@clinic.com'),
 ('Fatima', 'Husain', '1985-08-15', 'Female', 'Pediatrics', '0552223344', 'fatima.harbi@clinic.com'),
@@ -150,9 +140,7 @@ INSERT INTO Doctors (first_name, last_name,date_of_birth, gender, specialization
 ('Sara', 'Mohammed', '1990-03-22', 'Female', 'General Practice', '0544445566', 'sara.qahtani@clinic.com'),
 ('Rakan', 'Saud', '1982-11-05', 'Male', 'Orthopedics', '0535556677', 'khalid.sultan@clinic.com');
 
-/*-------------------------------------
--- Student 1: Insert patient records
--------------------------------------*/
+
 INSERT INTO Patients (first_name, last_name,date_of_birth, gender, phone_number, email, address) VALUES
 ('Noura', 'Abdullah', '1995-04-12', 'Female', '0509998877', 'noura@email.com', 'Riyadh - An Nafal'),
 ('Abdullah', 'Nasser', '1988-09-23', 'Male', '0558887766', 'abdullah@email.com', 'Riyadh - Al-Falah'),
@@ -180,9 +168,7 @@ INSERT INTO Medicines (Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Q
 (4, 'Omeprazole', 'Antacid', 15.75, 60),
 (5, 'Cetirizine', 'Antihistamine', 6.50, 120);
 
-/*-------------------------------------
--- Student 1: Insert prescription records
--------------------------------------*/
+
 INSERT INTO Prescriptions (prescription_ID, patient_ID, doctor_ID, prescription_date) VALUES
 (1, 1, 4, '2026-03-01'),  
 (2, 2, 5, '2026-03-02'),  
@@ -223,9 +209,7 @@ VALUES
 (5, 'TRX1003', 'Visa');
 
 
-/*-------------------------------------
--- Student 1: Insert Prescription_Medicines records
--------------------------------------*/
+
 INSERT INTO Prescription_Medicines (prescription_ID, Medicine_ID, dosage) VALUES
 (1, 1, '1 tablet every 8 hours'),       
 (1, 3, '1 tablet after meals'),         
@@ -297,15 +281,11 @@ WHERE payment_status = 'Paid';
 =======================================================*/
 
 
-/*-------------------------------------
--- Student 1: SELECT queries
--------------------------------------*/
+
 SELECT * FROM Doctors;
 SELECT patient_ID, first_name, last_name, gender, phone_number FROM Patients;
 
-/*-------------------------------------
--- Student 1: JOIN query
--------------------------------------*/
+
 SELECT CONCAT (P.first_name, ' ', P.last_name) AS Patient_Name,
 P.phone_number,
 M.Medicine_Name,
