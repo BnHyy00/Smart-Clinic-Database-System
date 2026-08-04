@@ -82,6 +82,20 @@ SELECT
     appointment_status,
     COUNT(*) AS total_appointments
 FROM Appointments
-GROUP BY appointment_status
+GROUP BY appointment_status 
+ SELECT *
+FROM Treatments;
+SELECT *
+FROM Treatments
+WHERE appointment_ID IN (
+	SELECT appointment_ID
+	FROM Appointments
+	WHERE appointment_status = 'Completed'
+SELECT
+    appointment_status,
+	COUNT(*) AS total_appointments
+FROM Appointments
+GROUP BY appointment_status;
+
 
 
