@@ -265,7 +265,8 @@ WHERE Medicine_ID = 1;
 /*-------------------------------------
 -- Student 3: DELETE query
 -------------------------------------*/
-
+DELETE FROM Medicines 
+WHERE Medicine_ID = 6;
 
 /*-------------------------------------
 --Create a view for paid payments
