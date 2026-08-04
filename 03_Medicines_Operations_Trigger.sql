@@ -45,6 +45,6 @@ WHERE Medicine_ID = 1;
 DELETE FROM Medicines
 WHERE Medicine_ID = 6;
 
---6 Display medicine records
+-- 6. Display medicine records
 SELECT *
 FROM Medicines;
