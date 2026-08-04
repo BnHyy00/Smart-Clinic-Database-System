@@ -158,20 +158,14 @@ INSERT INTO Patients (first_name, last_name,date_of_birth, gender, phone_number,
 /*-------------------------------------
 -- Student 2: Insert appointment records
 -------------------------------------*/
-INSERT INTO Patients (patient_name, email) VALUES 
-('Ahmed Ali', 'ahmed@example.com'),
-('Sarah Smith', 'sarah@example.com'),
-('Khalid Omar', 'khalid@example.com'),
-('Mona Hassan', 'mona@example.com'),
-('Omar Salem', 'omar@example.com');
 
--- 6. Insert sample data into Doctors
-INSERT INTO Doctors (doctor_name, specialty) VALUES 
-('Dr. Ali Salem', 'Cardiology'),
-('Dr. Fatima Noor', 'Dentistry'),
-('Dr. Youssef Ahmed', 'General Medicine'),
-('Dr. Noura Fahad', 'Dermatology'),
-('Dr. Hossam Zaid', 'Pediatrics');
+ Insert sample data into Appointments
+INSERT INTO Appointments (patient_ID, doctor_ID, appointment_date, appointment_time, appointment_status) VALUES
+(1, 1, '2026-08-01', '09:00:00', 'Completed'),
+(2, 2, '2026-08-02', '10:00:00', 'Completed'),
+(3, 3, '2026-08-03', '11:00:00', 'Pending'),
+(4, 4, '2026-08-04', '13:00:00', 'Completed'),
+(5, 5, '2026-08-05', '14:00:00', 'Cancelled');
 
 /*-------------------------------------
 -- Student 2: Insert treatment records
