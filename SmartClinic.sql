@@ -1,13 +1,3 @@
--- =====================================================
--- Smart Clinic Database System
--- =====================================================
-
-
-/*=======================================================
-  1. CREATE TABLES
-=======================================================*/
-
-
 
 CREATE TABLE Doctors (doctor_ID INT AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
@@ -52,6 +42,7 @@ CREATE TABLE Treatments (
     diagnosis VARCHAR(150) NOT NULL,
     treatment_details VARCHAR(255),
     FOREIGN KEY (appointment_ID) REFERENCES Appointments(appointment_ID) ON DELETE CASCADE
+  );
 
 /*-------------------------------------
 -- Student 3: Medicines table
@@ -103,6 +94,23 @@ CREATE TABLE Card_Payments (
         REFERENCES Payments(payment_ID)
         ON DELETE CASCADE
 );
+/*-------------------------------------
+-- Prescriptions table
+-------------------------------------*/
+CREATE TABLE Prescriptions (
+    prescription_ID INT AUTO_INCREMENT PRIMARY KEY,
+    patient_ID INT NOT NULL,
+    doctor_ID INT NOT NULL,
+    prescription_date DATE NOT NULL,
+
+    FOREIGN KEY (patient_ID)
+        REFERENCES Patients(patient_ID)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (doctor_ID)
+        REFERENCES Doctors(doctor_ID)
+        ON DELETE CASCADE
+);
 
 
 
@@ -128,7 +136,7 @@ CREATE TABLE Treatment_Medicines (
         REFERENCES Treatments(treatment_ID),
 
     FOREIGN KEY (medicine_ID)
-        REFERENCES Medicines(medicine_ID)
+        REFERENCES Medicines(Medicine_ID)
 );
 
 
@@ -158,8 +166,6 @@ INSERT INTO Patients (first_name, last_name,date_of_birth, gender, phone_number,
 /*-------------------------------------
 -- Student 2: Insert appointment records
 -------------------------------------*/
-
- Insert sample data into Appointments
 INSERT INTO Appointments (patient_ID, doctor_ID, appointment_date, appointment_time, appointment_status) VALUES
 (1, 1, '2026-08-01', '09:00:00', 'Completed'),
 (2, 2, '2026-08-02', '10:00:00', 'Completed'),
@@ -223,14 +229,35 @@ VALUES
 (3, 'TRX1002', 'Mastercard'),
 (5, 'TRX1003', 'Visa');
 
+/*-------------------------------------
+-- Insert prescription records
+-------------------------------------*/
+INSERT INTO Prescriptions
+(patient_ID, doctor_ID, prescription_date)
+VALUES
+(1, 1, '2026-08-01'),
+(2, 2, '2026-08-02'),
+(3, 3, '2026-08-03');
 
-
+/*-------------------------------------
+-- Insert prescription medicines
+-------------------------------------*/
 INSERT INTO Prescription_Medicines (prescription_ID, Medicine_ID, dosage) VALUES
 (1, 1, '1 tablet every 8 hours'),       
 (1, 3, '1 tablet after meals'),         
 (2, 2, '1 capsule twice daily'),         
 (3, 4, '1 tablet before breakfast');
-
+/*-------------------------------------
+-- Insert treatment medicines
+-------------------------------------*/
+INSERT INTO Treatment_Medicines
+(treatment_ID, medicine_ID, dosage, duration)
+VALUES
+(1, 1, '1 tablet', '7 days'),
+(2, 2, '1 capsule', '5 days'),
+(3, 3, '1 tablet', '3 days'),
+(4, 4, 'Apply twice daily', '10 days'),
+(5, 1, '1 tablet', '1 day');
 
 /*=======================================================
   3. TRIGGER, UPDATE, DELETE, AND VIEW
@@ -322,32 +349,28 @@ INNER JOIN Treatments T ON A.appointment_ID = T.appointment_ID;
 /*-------------------------------------
 -- Student 2: SELECT queries
 -------------------------------------*/
- Display all records from Appointments
-SELECT  FROM Appointments;
--- Query B: Display all records from Treatments
-SELECT  FROM Treatments;
+SELECT * FROM Appointments;
+-- Display all records from Treatments
+SELECT * FROM Treatments;
 
 
 /*-------------------------------------
 -- Student 2: Nested query
 -------------------------------------*/
- Nested Query to retrieve treatment details for completed appointments
-SELECT 
+SELECT *
 FROM Treatments 
 WHERE appointment_ID IN (
     SELECT appointment_ID 
     FROM Appointments 
     WHERE appointment_status = 'Completed'
-
+  );
 
 /*-------------------------------------
 -- Student 2: GROUP BY query
 -------------------------------------*/
-
-Count total appointments grouped by appointment status
 SELECT 
     appointment_status, 
-    COUNT AS total_appointments 
+    COUNT(*) AS total_appointments 
 FROM Appointments 
 GROUP BY appointment_status; 
 
