@@ -1,4 +1,3 @@
-
 CREATE TABLE Doctors (doctor_ID INT AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
@@ -18,9 +17,6 @@ CREATE TABLE Patients (patient_ID INT AUTO_INCREMENT  PRIMARY KEY,
     email VARCHAR(80) UNIQUE,
     address VARCHAR(255));
 
-/*-------------------------------------
--- Student 2: Appointments table
--------------------------------------*/
 CREATE TABLE Appointments (
     appointment_ID INT AUTO_INCREMENT PRIMARY KEY,
     patient_ID INT NOT NULL,
@@ -32,10 +28,6 @@ CREATE TABLE Appointments (
     FOREIGN KEY (doctor_ID) REFERENCES Doctors(doctor_ID) ON DELETE CASCADE
 );
 
-
-/*-------------------------------------
--- Student 2: Treatments table
--------------------------------------*/
 CREATE TABLE Treatments (
     treatment_ID INT AUTO_INCREMENT PRIMARY KEY,
     appointment_ID INT NOT NULL,
@@ -44,9 +36,6 @@ CREATE TABLE Treatments (
     FOREIGN KEY (appointment_ID) REFERENCES Appointments(appointment_ID) ON DELETE CASCADE
   );
 
-/*-------------------------------------
--- Student 3: Medicines table
--------------------------------------*/
 CREATE TABLE Medicines (
     Medicine_ID INT PRIMARY KEY,
     Medicine_Name VARCHAR(100) NOT NULL,
@@ -70,7 +59,6 @@ CREATE TABLE Payments (
         REFERENCES Appointments(appointment_ID)
 );
 
-
 /*-------------------------------------
 --Here is the Cash_Payments table creation
 -------------------------------------*/
@@ -81,7 +69,6 @@ CREATE TABLE Cash_Payments (
         REFERENCES Payments(payment_ID)
         ON DELETE CASCADE
 );
-
 
 /*-------------------------------------
 --Here is the Card_Payments table creation
@@ -112,8 +99,6 @@ CREATE TABLE Prescriptions (
         ON DELETE CASCADE
 );
 
-
-
 CREATE TABLE Prescription_Medicines (prescription_ID INT,
   Medicine_ID INT,
   dosage VARCHAR(100) NOT NULL,
@@ -139,15 +124,6 @@ CREATE TABLE Treatment_Medicines (
         REFERENCES Medicines(Medicine_ID)
 );
 
-
-
-
-/*=======================================================
-  2. INSERT RECORDS
-=======================================================*/
-
-
-
 INSERT INTO Doctors (first_name, last_name,date_of_birth, gender, specialization, phone_number, email) VALUES
 ('Ahmed', 'Ali', '1980-05-10', 'Male', 'Cardiology', '0501112233', 'ahmed.otaibi@clinic.com'),
 ('Fatima', 'Husain', '1985-08-15', 'Female', 'Pediatrics', '0552223344', 'fatima.harbi@clinic.com'),
@@ -163,9 +139,7 @@ INSERT INTO Patients (first_name, last_name,date_of_birth, gender, phone_number,
 ('Mohammed', 'Mansour', '1975-11-30', 'Male', '0546665544', '', 'Riyadh - An nada'),
 ('Layan', 'Tariq', '1999-06-05', 'Female', '0535554433', 'layan@email.com', 'Riyadh - Al-Yasmin');
 
-/*-------------------------------------
--- Student 2: Insert appointment records
--------------------------------------*/
+
 INSERT INTO Appointments (patient_ID, doctor_ID, appointment_date, appointment_time, appointment_status) VALUES
 (1, 1, '2026-08-01', '09:00:00', 'Completed'),
 (2, 2, '2026-08-02', '10:00:00', 'Completed'),
@@ -173,9 +147,6 @@ INSERT INTO Appointments (patient_ID, doctor_ID, appointment_date, appointment_t
 (4, 4, '2026-08-04', '13:00:00', 'Completed'),
 (5, 5, '2026-08-05', '14:00:00', 'Cancelled');
 
-/*-------------------------------------
--- Student 2: Insert treatment records
--------------------------------------*/
 INSERT INTO Treatments (appointment_ID, diagnosis, treatment_details) VALUES
 (1, 'Hypertension', 'Medication prescribed'),
 (2, 'Tooth Decay', 'Dental Filling'),
@@ -183,9 +154,6 @@ INSERT INTO Treatments (appointment_ID, diagnosis, treatment_details) VALUES
 (4, 'Allergy', 'Topical Cream'),
 (5, 'Checkup', 'General Health Advice');
 
-/*-------------------------------------
--- Student 3: Insert medicine records
--------------------------------------*/
 INSERT INTO Medicines
 (Medicine_ID, Medicine_Name, Category, Unit_Price, Stock_Quantity)
 VALUES
@@ -216,8 +184,6 @@ INSERT INTO Cash_Payments
 VALUES
 (1, 'Ahmed Ali'),
 (4, 'Sara Mohammed');
-
-
 
 /*-------------------------------------
 -- Insert card payment details
@@ -259,14 +225,6 @@ VALUES
 (4, 4, 'Apply twice daily', '10 days'),
 (5, 1, '1 tablet', '1 day');
 
-/*=======================================================
-  3. TRIGGER, UPDATE, DELETE, AND VIEW
-=======================================================*/
-
-
-/*-------------------------------------
--- Student 3: Create trigger
--------------------------------------*/
 DELIMITER //
 
 CREATE TRIGGER Before_Medicine_Update
@@ -281,16 +239,10 @@ END //
 
 DELIMITER ;
 
-/*-------------------------------------
--- Student 3: UPDATE query
--------------------------------------*/
 UPDATE Medicines
 SET Unit_Price = 6.00
 WHERE Medicine_ID = 1;
 
-/*-------------------------------------
--- Student 3: DELETE query
--------------------------------------*/
 DELETE FROM Medicines
 WHERE Medicine_ID = 6;
 
@@ -306,14 +258,6 @@ SELECT
     payment_type
 FROM Payments
 WHERE payment_status = 'Paid';
-
-
-
-
-/*=======================================================
-  4. SELECT QUERIES
-=======================================================*/
-
 
 
 SELECT * FROM Doctors;
@@ -332,7 +276,7 @@ INNER JOIN Prescriptions Pr ON P.patient_ID = Pr.patient_ID
 INNER JOIN Doctors D ON D.doctor_ID = Pr.doctor_ID
 INNER JOIN Prescription_Medicines PM ON Pr.prescription_ID = PM.prescription_ID
 INNER JOIN Medicines M ON PM.medicine_ID = M.Medicine_ID;
---
+
 SELECT CONCAT (P.first_name, ' ', P.last_name) AS Patient_Name,
 CONCAT (D.first_name, ' ', D.last_name) AS Doctor_Name,
 D.specialization AS Doctor_Specialization,
@@ -346,17 +290,11 @@ INNER JOIN Patients P ON A.patient_ID = P.patient_ID
 INNER JOIN Doctors D ON A.doctor_ID = D.doctor_ID
 INNER JOIN Treatments T ON A.appointment_ID = T.appointment_ID;
 
-/*-------------------------------------
--- Student 2: SELECT queries
--------------------------------------*/
 SELECT * FROM Appointments;
 -- Display all records from Treatments
 SELECT * FROM Treatments;
 
 
-/*-------------------------------------
--- Student 2: Nested query
--------------------------------------*/
 SELECT *
 FROM Treatments 
 WHERE appointment_ID IN (
@@ -365,18 +303,14 @@ WHERE appointment_ID IN (
     WHERE appointment_status = 'Completed'
   );
 
-/*-------------------------------------
--- Student 2: GROUP BY query
--------------------------------------*/
+
 SELECT 
     appointment_status, 
     COUNT(*) AS total_appointments 
 FROM Appointments 
 GROUP BY appointment_status; 
 
-/*-------------------------------------
--- Student 3: Display medicine records
--------------------------------------*/
+
 SELECT *
 FROM Medicines;
 
